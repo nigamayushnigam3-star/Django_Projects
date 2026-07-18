@@ -1,0 +1,22 @@
+downlod pip install pillow otherwie not run ....
+
+# for see the image from admin pannel 
+
+from django.contrib import admin
+from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static 
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# to locate all the pic at same url 
+MEDIA_URL ='/media/'
+MEDIA_ROOT = BASE_DIR/'media' {in settings }
+
+# enctype="multipart/form-data  ->> eske bina mere image upload hi nhi hoga db me ... ye hm jha post method likhte h html me just uske samne ye likhte h ...........
+
+#############################################################################
+for show the image on home page ->>>>>
+firstly ->  img = Image.objects.all() ->> img ke under sara data as a object bj denge ....
