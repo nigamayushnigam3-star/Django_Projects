@@ -1,0 +1,152 @@
+====================================================
+   GIT PROCEDURE - CRUD_Project ko GitHub pe add karna
+====================================================
+
+SITUATION:
+- Ek GitHub repo pehle se thi jisme "Project" folder tha
+- Naya "CRUD_Project" folder usi repo me add karna tha
+- Dono projects alag alag folders me rehne chahiye the
+
+----------------------------------------------------
+STEP 1 - CRUD_Project folder me Git initialize karo
+----------------------------------------------------
+Command: git init
+
+Kya karta hai:
+- CRUD_Project folder me ek naya git repository banata hai
+- Ek hidden .git folder create hota hai
+
+----------------------------------------------------
+STEP 2 - Same GitHub repo ko remote add karo
+----------------------------------------------------
+Command: git remote add origin https://github.com/nigamayushnigam3-star/Django_Projects.git
+
+Kya karta hai:
+- Is local repo ko GitHub wali repo se connect karta hai
+- "origin" ek naam hai us remote repo ka
+
+----------------------------------------------------
+STEP 3 - Remote se history fetch karo
+----------------------------------------------------
+Command: git fetch origin
+
+Kya karta hai:
+- GitHub se saari commit history download karta hai
+- Files copy nahi hoti, sirf history aati hai
+
+----------------------------------------------------
+STEP 4 - Main branch pe switch karo
+----------------------------------------------------
+Command: git checkout main
+
+Kya karta hai:
+- Local repo ko "main" branch pe le aata hai
+- Jo branch GitHub pe hai usi pe kaam karte hain
+
+----------------------------------------------------
+STEP 5 - Existing repo ka code pull karo
+----------------------------------------------------
+Command: git pull origin main --allow-unrelated-histories
+
+Kya karta hai:
+- GitHub se existing code local me le aata hai
+- "--allow-unrelated-histories" isliye lagaya kyunki
+  ye naya git init tha, purani history nahi thi
+
+----------------------------------------------------
+STEP 6 - Saari files stage karo
+----------------------------------------------------
+Command: git add .
+
+Kya karta hai:
+- "." matlab saari files select karo
+- Commit ke liye files ready hoti hain (staging area)
+
+----------------------------------------------------
+STEP 7 - Commit karo
+----------------------------------------------------
+Command: git commit -m "Add CRUD_Project - Function Based View ModelForm CRUD"
+
+Kya karta hai:
+- Staged files ka ek snapshot save hota hai
+- "-m" ke baad message likhte hain jo batata hai kya kiya
+
+----------------------------------------------------
+STEP 8 - GitHub pe push karo
+----------------------------------------------------
+Command: git push origin main
+
+Kya karta hai:
+- Local commits GitHub pe upload ho jaate hain
+- "origin" = GitHub repo, "main" = branch name
+
+----------------------------------------------------
+STEP 9 - Files galat jagah thi, move kiya
+----------------------------------------------------
+Commands:
+  git mv crud CRUD_Project/crud
+  git mv manage.py CRUD_Project/manage.py
+  git mv db.sqlite3 CRUD_Project/db.sqlite3
+  git mv .txt CRUD_Project/.txt
+
+Kya karta hai:
+- Files root se CRUD_Project folder ke andar move hoti hain
+- "git mv" se move track hota hai git me
+
+----------------------------------------------------
+STEP 10 - Move ka commit aur push
+----------------------------------------------------
+Commands:
+  git commit -m "Move CRUD files inside CRUD_Project folder"
+  git push origin main
+
+Kya karta hai:
+- Move ki gayi files ka commit banta hai
+- GitHub pe push hota hai, ab structure sahi dikhta hai
+
+----------------------------------------------------
+STEP 11 - README update kiya
+----------------------------------------------------
+Commands:
+  git add README.md
+  git commit -m "Update README - add CRUD_Project content"
+  git push origin main
+
+Kya karta hai:
+- README.md me dono projects ka content add kiya
+- Commit karke GitHub pe push kiya
+
+====================================================
+FINAL GITHUB STRUCTURE
+====================================================
+
+Django_Projects/
+├── Project/           --> Pehle wala Image Uploader project
+│   ├── app/
+│   ├── media/
+│   ├── manage.py
+│   └── db.sqlite3
+│
+└── CRUD_Project/      --> Naya CRUD project
+    ├── CRUD_Project/
+    ├── crud/
+    ├── manage.py
+    └── db.sqlite3
+
+====================================================
+IMPORTANT COMMANDS YAAD RAKHNE KE LIYE
+====================================================
+
+git init                          --> Naya repo banao
+git remote add origin <url>       --> GitHub se connect karo
+git fetch origin                  --> History download karo
+git checkout main                 --> Branch switch karo
+git pull origin main              --> GitHub se code lo
+git add .                         --> Saari files stage karo
+git commit -m "message"           --> Snapshot lo
+git push origin main              --> GitHub pe upload karo
+git mv <old> <new>                --> File move/rename karo
+git status                        --> Current status dekho
+git log --oneline                 --> Commit history dekho
+
+====================================================
