@@ -1,0 +1,14 @@
+{% extends 'crud/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-sm-6">
+    <h4 class="text-center alert alert-warning">Update Student</h4>
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" class="btn btn-warning" value="Update">
+      <a href="{% url 'add' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock content %}

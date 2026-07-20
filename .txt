@@ -1,0 +1,91 @@
+##class StudentRegistration(forms.ModelForm):
+    class Meta:
+        model = User 
+        fields = ['name','email','password'] 
+        widgets = {
+        'name':forms.TextInput(attrs={'class':'form-control'}),
+        'email':forms.EmailInput(attrs={'class':'form-control'}),
+        'password':forms.PasswordInput(attrs={'class':'form-control'}),
+        }
+
+ess widget ko use krke pura full width ke box aa rha jisse hme km krn h toh hm ye krenge 
+
+in html page->> 
+<div class="row">
+  <div class="col-sm-4">
+    <h4>Add New Student</h4>
+    <form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-success" value="Add">
+    </form>
+  </div>
+</div> # bootsrap calss 
+
+
+######
+Easiest way to store the data in database :--->>>>
+
+def add_show(request):
+if request.method == 'POST':
+fm = StudentRegistration(request.POST)
+if fm.is_valid():
+fm.save()
+
+#########################################################
+For data Retrive :-->>>>
+bootstrap me 1 row = 12 columns hoti hain.
+
+{% if stu %}
+
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+check the table data agr table me data rha toh if chalega otherwise else chalega....
+
+### and the data are retrive from views as 
+ye stud else ke bahr hoga dhyan rhe 
+ stud = User.objects.all() 
+    return render(request , 'crud/addandshow.html' ,{'form':fm , 'stu':stud})
+
+{% if stu %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for st in stu %}
+    <tr>
+      <th scope="row">{{st.id}}</th>
+      <td>{{st.name}}</td> 
+      <td>{{st.email}}</td>
+      <td>{{st.password}}</td>
+    </tr>
+    {% endfor %} 
+    </tr>
+  </tbody>
+</table>
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+######################################
+
+for deleting :-- 
+
+def delete_data(request,id):
+   if request.method == 'POST':
+      pi = User.object.get(pk=id) 
+
+path('delete/<int:id>/', delete_data , name='delete_data')
+
+<a href="#" class="btn btn-danger btn-sm">Delete</a>  ->> esko change krke form ka use krenge hmmmm..
+
+   {% csrf_token %}
+       <input type="submit" class="btn btn-danger" value="Delete">
+    </form>
