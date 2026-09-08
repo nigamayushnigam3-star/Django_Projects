@@ -22,7 +22,7 @@ def add(request):
     else:
      fm = StudentRegistration()
     stud = User.objects.all() 
-    return render(request , 'crud/addandshow.html' ,{'form':fm , 'stu':stud})
+    return render(request , 'crud/addandshow.html' ,{'form':fm , 'stu':stud})  
 
 
 

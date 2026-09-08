@@ -1,0 +1,24 @@
+# for env = mkvirtualenv env_name  , if i wnat to deactivate this then only run deactivate and for again work -> workon env_name 
+
+# for JWT token ->> django simple JWT (search on google)
+run -> PIP INSTALL DJANGORESTFRAMEWORK-SIMPLEJWT 
+// then add this on setting.py 
+\REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}  THIS ARE ADDEDD in settings.py 
+// add in installed app 
+rest_framework_simplejwt
+
+// jbbhi hm frontend ko backend se connect krte h tb cors policy error ta h , usko hme solve krn hota h ...
+install -> pip install django-cors-headers 
+'corsheader', ->> installed app 
+ "corsheaders.middleware.CorsMiddleware", -> in middleware 
+ # tin kaam tha cors me usme se hm ye wala kaam krenge , add in last of settings.py 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000", to handle the frontend connectivity error 
+]

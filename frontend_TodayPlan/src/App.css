@@ -1,0 +1,48 @@
+.app-shell {
+  display: grid;
+  min-height: 100vh;
+  place-items: start center;
+  padding: 48px 20px;
+}
+
+.plan-card {
+  width: min(100%, 620px);
+  padding: 32px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 35px rgb(23 32 51 / 12%);
+}
+
+h1 { margin: 0 0 28px; font-size: 2rem; }
+h2 { margin: 32px 0 12px; font-size: 1.2rem; }
+label { display: block; margin-bottom: 8px; font-weight: 600; }
+
+.input-row { display: flex; gap: 10px; }
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #b8c2d1;
+  border-radius: 8px;
+}
+
+button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #2463eb;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled { cursor: not-allowed; opacity: .6; }
+.message { color: #526176; }
+.error { color: #ba1a1a; }
+.plan-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.plan-list li { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px; border-radius: 8px; background: #f4f7fb; }
+.remove-button { background: #c52c38; }
+
+@media (max-width: 480px) {
+  .plan-card { padding: 22px; }
+  .input-row { flex-direction: column; }
+}

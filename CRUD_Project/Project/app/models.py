@@ -7,4 +7,3 @@ class Image(models.Model):
     # my_image auto create hoga ....
     # abhi hme vo pic show nhi hoga jbtk url set nhi krenege 
     date = models.DateTimeField(auto_now_add=True) 
-  
